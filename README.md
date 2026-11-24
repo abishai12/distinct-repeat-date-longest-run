@@ -26,7 +26,6 @@ Example from the question:
 
 ## How This Program Works
 
-Your original code (`repeat_date_longest_run.py`) does this:
 
 1. **Iterate calendar:** Loop `year = 2026 → 2098`, `month = 1 → 12`, with correct `days_in_month` including leap year logic `year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)`.
 2. **Build date string:** `DD + MM + YY[2:4]` e.g. `05` + `09` + `29` = `050929`
@@ -73,22 +72,6 @@ So your submission value is:
 ```
 310829250431
 ```
-
-## Improvements (for a clean version)
-
-Your bubble sort works but is O(n²). A simpler Pythonic check is:
-
-```python
-from datetime import date, timedelta
-
-def is_distinct(d):
-    s = d.strftime("%d%m%y")
-    return len(set(s)) == 6
-```
-
-Then just collect distinct dates and compute `(next_distinct - prev_distinct).days - 1`.
-
-This avoids manual month/day handling and string sorting.
 
 ## Complexity
 - Dates checked: ~26k days (2026-2098)
